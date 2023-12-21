@@ -13,12 +13,14 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		4A1F6774B1DFFE1E2413167F /* Pods_AwesomeProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4155F380EC938C2E633EC41 /* Pods_AwesomeProject.framework */; };
 		5A1BFF3D3FACBE08495F0464 /* Pods_AwesomeProject_AwesomeProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 991B276500785B35B8B8AF29 /* Pods_AwesomeProject_AwesomeProjectTests.framework */; };
+		732165152B34046C00BA2941 /* RNTMapstedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 732165132B34046A00BA2941 /* RNTMapstedManager.m */; };
+		732165162B34046C00BA2941 /* RNTMapstedManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 732165142B34046C00BA2941 /* RNTMapstedManager.h */; };
 		736850062B0B62200082FF9E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 736850052B0B62200082FF9E /* CoreData.framework */; };
 		736850082B0B62290082FF9E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 736850072B0B62290082FF9E /* CoreLocation.framework */; };
 		738970502B33E03800793476 /* MapsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7389704E2B33E03500793476 /* MapsViewController.xib */; };
 		738970512B33E03800793476 /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7389704F2B33E03800793476 /* MapsViewController.swift */; };
 		738ABEEA2B0DD4A500C9A855 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738ABEE92B0DD4A500C9A855 /* MapViewController.swift */; };
-		738ABEEC2B0DD4B800C9A855 /* RCNMapViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738ABEEB2B0DD4B700C9A855 /* RCNMapViewTest.swift */; };
+		738ABEEC2B0DD4B800C9A855 /* RNTMapstedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738ABEEB2B0DD4B700C9A855 /* RNTMapstedView.swift */; };
 		73BA4B9A2B049C6800F46878 /* ChangeViewBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 73BA4B992B049C6800F46878 /* ChangeViewBridge.m */; };
 		73BA4BA52B05BE5A00F46878 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73BA4BA42B05BE5A00F46878 /* GLKit.framework */; };
 		73BA4BAC2B05BEA300F46878 /* mapstyle.zip in Resources */ = {isa = PBXBuildFile; fileRef = 73BA4BA72B05BEA300F46878 /* mapstyle.zip */; };
@@ -64,12 +66,14 @@
 		3B4392A12AC88292D35C810B /* Pods-AwesomeProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AwesomeProject.debug.xcconfig"; path = "Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-AwesomeProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AwesomeProject.release.xcconfig"; path = "Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-AwesomeProject-AwesomeProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AwesomeProject-AwesomeProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-AwesomeProject-AwesomeProjectTests/Pods-AwesomeProject-AwesomeProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
+		732165132B34046A00BA2941 /* RNTMapstedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNTMapstedManager.m; sourceTree = "<group>"; };
+		732165142B34046C00BA2941 /* RNTMapstedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNTMapstedManager.h; sourceTree = "<group>"; };
 		736850052B0B62200082FF9E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		736850072B0B62290082FF9E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7389704E2B33E03500793476 /* MapsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapsViewController.xib; sourceTree = "<group>"; };
 		7389704F2B33E03800793476 /* MapsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
 		738ABEE92B0DD4A500C9A855 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		738ABEEB2B0DD4B700C9A855 /* RCNMapViewTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCNMapViewTest.swift; sourceTree = "<group>"; };
+		738ABEEB2B0DD4B700C9A855 /* RNTMapstedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNTMapstedView.swift; sourceTree = "<group>"; };
 		73BA4B912B0495AC00F46878 /* AwesomeProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AwesomeProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		73BA4B982B049C6800F46878 /* ChangeViewBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeViewBridge.h; sourceTree = "<group>"; };
 		73BA4B992B049C6800F46878 /* ChangeViewBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeViewBridge.m; sourceTree = "<group>"; };
@@ -175,6 +179,8 @@
 			children = (
 				73BA4B982B049C6800F46878 /* ChangeViewBridge.h */,
 				73BA4B992B049C6800F46878 /* ChangeViewBridge.m */,
+				732165142B34046C00BA2941 /* RNTMapstedManager.h */,
+				732165132B34046A00BA2941 /* RNTMapstedManager.m */,
 			);
 			name = Bridge;
 			sourceTree = "<group>";
@@ -201,7 +207,7 @@
 		73BA4BB02B05E9F100F46878 /* MapView */ = {
 			isa = PBXGroup;
 			children = (
-				738ABEEB2B0DD4B700C9A855 /* RCNMapViewTest.swift */,
+				738ABEEB2B0DD4B700C9A855 /* RNTMapstedView.swift */,
 				73BA4BB12B05EA1400F46878 /* UIVIew-Extension.swift */,
 			);
 			name = MapView;
@@ -257,6 +263,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				732165162B34046C00BA2941 /* RNTMapstedManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,7 +508,8 @@
 				73BA4B9A2B049C6800F46878 /* ChangeViewBridge.m in Sources */,
 				738ABEEA2B0DD4A500C9A855 /* MapViewController.swift in Sources */,
 				73BA4BB32B05EA1400F46878 /* UIVIew-Extension.swift in Sources */,
-				738ABEEC2B0DD4B800C9A855 /* RCNMapViewTest.swift in Sources */,
+				738ABEEC2B0DD4B800C9A855 /* RNTMapstedView.swift in Sources */,
+				732165152B34046C00BA2941 /* RNTMapstedManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

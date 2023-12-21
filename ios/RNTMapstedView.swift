@@ -11,7 +11,7 @@ import Foundation
 import CoreLocation
 import MapstedCore
 import MapstedMap
-class RCNMapViewTest: UIView {
+@objc class RNTMapstedView: UIView {
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -22,35 +22,45 @@ class RCNMapViewTest: UIView {
     */
     var spinnerView: UIActivityIndicatorView!
     var mapPlaceholderView: UIView!
+    let screen_width = UIScreen.main.bounds.width
+    let screen_height = UIScreen.main.bounds.height
+    var _title: String = ""
+
+    @objc var title: String {
+      get {
+        return self._title
+      }
+      set (newVal) {
+        self._title = newVal
+      }
+    }
     
         //View controller in charge of map view
     private let mapViewController = MNMapViewController()
     
     //MARK: -
-    override init(frame: CGRect) {
+    @objc override init(frame: CGRect) {
         super.init(frame: frame)
         createSubViews()
     }
 
-    init (labelText: String) {
+    @objc init (labelText: String) {
         super.init(frame: .zero)
         createSubViews()
     }
 
-    required init?(coder: NSCoder) {
+    @objc required init?(coder: NSCoder) {
         super.init(coder: coder)
         createSubViews()
     }
     
     // Creating subview
     private func createSubViews() {
-        let width = self.bounds.width;
-        let height = self.bounds.height;
 
         self.mapPlaceholderView = UIView(frame: self.frame);
-        self.mapPlaceholderView.backgroundColor = UIColor.gray;
+        self.mapPlaceholderView.backgroundColor = UIColor.white;
         addSubview(self.mapPlaceholderView);
-        self.spinnerView = UIActivityIndicatorView(frame: CGRect(origin: CGPoint(x: (width - 20)/2, y: (height - 20)/2), size: CGSize(width: 20, height: 20)))
+      self.spinnerView = UIActivityIndicatorView(frame: CGRect(origin: CGPoint(x: (self.frame.size.width - 20)/2, y: (self.frame.size.height - 20)/2), size: CGSize(width: 20, height: 20)))
         addSubview(self.spinnerView)
         
         showSpinner()
@@ -63,6 +73,14 @@ class RCNMapViewTest: UIView {
             MapstedMapApi.shared.setUp(prefetchProperties: false, callback: self)
         }
     }
+  
+      override func layoutSubviews() {
+        self.mapPlaceholderView.frame = self.frame
+        self.spinnerView.frame = CGRect(origin: CGPoint(x: (self.frame.size.width - 20)/2, y: (self.frame.size.height - 20)/2), size: CGSize(width: 20, height: 20))
+        mapViewController.view.bounds = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height);
+        mapViewController.view.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height);
+  
+      }
     
     //MARK: - Show & Hide Spinner
     
@@ -90,8 +108,8 @@ class RCNMapViewTest: UIView {
             //UI Stuff
         //addChild(mapViewController)
         mapViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        mapViewController.view.bounds = CGRect(x: 0, y: 0, width: 300, height: 400);
-        mapViewController.view.frame = CGRect(x: 0, y: 0, width: 300, height: 400);
+        mapViewController.view.bounds = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height);
+        mapViewController.view.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height);
         self.mapPlaceholderView.addSubview(mapViewController.view)
         addParentsConstraints(view: mapViewController.view)
         mapViewController.didMove(toParent: self.findViewController())
@@ -148,7 +166,7 @@ class RCNMapViewTest: UIView {
 }
 
 //MARK: - UI Constraints Helper method
-extension RCNMapViewTest {
+extension RNTMapstedView {
         //Helper method
     func addParentsConstraints(view: UIView?) {
         guard let superview = view?.superview else {
@@ -170,7 +188,7 @@ extension RCNMapViewTest {
 }
 
 //MARK: - Core Init Callback methods
-extension RCNMapViewTest : CoreInitCallback {
+extension RNTMapstedView : CoreInitCallback {
     func onSuccess() {
         //Once the Map API Setup is complete, Setup the Mapview
         self.handleSuccess()
@@ -190,7 +208,7 @@ extension RCNMapViewTest : CoreInitCallback {
 }
 
 //MARK: - Property Download Listener Callback methods
-extension RCNMapViewTest : PropertyDownloadListener {
+extension RNTMapstedView : PropertyDownloadListener {
     func onSuccess(propertyId: Int) {
         self.drawProperty(propertyId: propertyId, completion: {
             self.findEntityByName(name: "ar", propertyId: propertyId)

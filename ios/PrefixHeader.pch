@@ -7,6 +7,9 @@
 
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.width
+
 //#import "AwesomeProject-Swift.h"
 //#import <MapstedCore/MapstedCore-Swift.h>
 //#import <MapstedMap/MapstedMap-Swift.h>
