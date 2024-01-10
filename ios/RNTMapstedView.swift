@@ -24,14 +24,15 @@ import MapstedMap
     var mapPlaceholderView: UIView!
     let screen_width = UIScreen.main.bounds.width
     let screen_height = UIScreen.main.bounds.height
-    var _title: String = ""
+    var _propertyId: Int = 0
 
-    @objc var title: String {
+    @objc var propertyId: Int {
       get {
-        return self._title
+        return self._propertyId
       }
       set (newVal) {
-        self._title = newVal
+        self._propertyId = newVal
+        downloadPropertyAndDraw()
       }
     }
     
@@ -60,7 +61,7 @@ import MapstedMap
         self.mapPlaceholderView = UIView(frame: self.frame);
         self.mapPlaceholderView.backgroundColor = UIColor.white;
         addSubview(self.mapPlaceholderView);
-      self.spinnerView = UIActivityIndicatorView(frame: CGRect(origin: CGPoint(x: (self.frame.size.width - 20)/2, y: (self.frame.size.height - 20)/2), size: CGSize(width: 20, height: 20)))
+        self.spinnerView = UIActivityIndicatorView(frame: CGRect(origin: CGPoint(x: (self.frame.size.width - 20)/2, y: (self.frame.size.height - 20)/2), size: CGSize(width: 20, height: 20)))
         addSubview(self.spinnerView)
         
         showSpinner()
@@ -114,10 +115,36 @@ import MapstedMap
         addParentsConstraints(view: mapViewController.view)
         mapViewController.didMove(toParent: self.findViewController())
         
-        //addSubview(mapViewController.view)
         //Added handleSuccess once MapView is ready to avoid any plotting issues.
-        let propertyId = 504
-        self.startDownload(propertyId: propertyId)
+        downloadPropertyAndDraw()
+        //let propertyId = 1130
+        //let propertyId = 504
+//        let propertyId = self.propertyId
+//
+//        // check if property data already exist, if exist then no need download again
+//        guard (CoreApi.PropertyManager.getCached(propertyId: propertyId)) != nil else {
+//          self.startDownload(propertyId: propertyId)
+//          return
+//        }
+//        self.drawProperty(propertyId: propertyId, completion: {
+//            self.findEntityByName(name: "ar", propertyId: propertyId)
+//        })
+        //self.startDownload(propertyId: propertyId)
+    }
+  
+    func downloadPropertyAndDraw() {
+        //let propertyId = 1130
+        //let propertyId = 504
+        let propertyId = self.propertyId
+
+        // check if property data already exist, if exist then no need download again
+        guard (CoreApi.PropertyManager.getCached(propertyId: propertyId)) != nil else {
+          self.startDownload(propertyId: propertyId)
+          return
+        }
+        self.drawProperty(propertyId: propertyId, completion: {
+            self.findEntityByName(name: "ar", propertyId: propertyId)
+        })
     }
     
     func startDownload(propertyId: Int) {
@@ -144,6 +171,8 @@ import MapstedMap
             return
         }
         DispatchQueue.main.async {
+          // remove property first in case draw again
+            MapstedMapApi.shared.removeProperty(propertyId: propertyId)
             MapstedMapApi.shared.drawProperty(isSelected: true, propertyData: propertyData)
             if let propertyInfo = PropertyInfo(propertyId: propertyId) {
                 MapstedMapApi.shared.mapView()?.moveToLocation(mercator: propertyInfo.getCentroid(), zoom: 18, duration: 0.2)

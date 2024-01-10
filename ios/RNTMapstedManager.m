@@ -19,6 +19,6 @@ RCT_EXPORT_MODULE(RNTMap)
 }
 // RNTMapManager.m
 // RCT_EXPORT_VIEW_PROPERTY(zoomEnabled, BOOL)
-RCT_EXPORT_VIEW_PROPERTY(title, NSString)
+RCT_EXPORT_VIEW_PROPERTY(propertyId, int)
 
 @end

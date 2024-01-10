@@ -88,7 +88,7 @@ function App(): JSX.Element {
           }}>
           <Section title="Step One ">
           <>
-          <MapView style={{ width: 350, height: 400 }} />
+          <MapView style={{ width: 350, height: 400 }} propertyId={504}/>
           </>
             Edit <Text style={styles.highlight}>App.tsx</Text> to change this
             screen and then come back to see your edits.

@@ -15,7 +15,7 @@ MapView.propTypes = {
    * gestures to zoom in and out of the map.
    */
   // zoomEnabled: PropTypes.bool
-  title: PropTypes.string
+  propertyId: PropTypes.number
 };
 
 const RNTMap = requireNativeComponent('RNTMap', MapView);
